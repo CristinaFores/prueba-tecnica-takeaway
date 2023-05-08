@@ -7,7 +7,7 @@ import * as Menubar from "@radix-ui/react-menubar";
 const Header: React.FC = () => {
   return (
     <>
-      <header className=" bg-gradient-to-r from-slate-100 to-primary py-4 px-5 font-semibold text-lg ">
+      <header className=" bg-gradient-to-r from-slate-100 to-primary py-4 px-8 font-semibold text-lg ">
         <div className="flex justify-between ">
           <div>
             <img src={image} alt="" width={150} />
