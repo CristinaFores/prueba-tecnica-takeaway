@@ -12,6 +12,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "esModuleInterop": true,
 
     /* Linting */
     "strict": true,
@@ -19,6 +20,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "tailwind.config.cjs",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "**/*.cjs"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
