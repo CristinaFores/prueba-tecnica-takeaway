@@ -29,10 +29,10 @@ const FormWithNotes: React.FC<FormWithNotesProps> = ({ initialText }) => {
     <div>
       {!modalVisible && (
         <button
-          className=" text-textColor-violet font-semibold text-2xl
-           focus:ring-2 focus:ring-black focus:outline-none cursor-pointer
-           hover:bg-backgroundColor-mauve hover:underline 
-           scale-[2]"
+          className="text-textColor-violet font-semibold text-2xl
+                 focus:ring-2 focus:ring-black focus:outline-none cursor-pointer
+                 hover:bg-backgroundColor-mauve hover:underline 
+                 scale-[2]"
           onClick={handleModalClick}
         >
           Abrir Nota
