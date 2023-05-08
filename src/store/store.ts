@@ -21,6 +21,7 @@ export const useStore = create(
         }),
       noteModal: {
         open: false,
+        textModal: "",
         note: "",
         regions: {
           regionId: "",
