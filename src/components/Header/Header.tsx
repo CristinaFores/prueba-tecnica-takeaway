@@ -1,6 +1,5 @@
-// src/components/Header.tsx
 import React from "react";
-import image from "../assets/logo.png";
+import image from "../../assets/logo.png";
 
 import * as Menubar from "@radix-ui/react-menubar";
 
