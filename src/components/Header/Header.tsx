@@ -18,29 +18,14 @@ const Header: React.FC = () => {
                 <span className="absolute inset-x-0 bottom-0 h-0.5 -mx-2 bg-gradient-to-r from-sky-950 to-slate-300 transform scale-x-0 transition-all duration-300 group-hover:scale-x-100"></span>
               </Menubar.Trigger>
               <Menubar.Portal>
-                <Menubar.Content
-                  className="bg-primary text-primary-light
-                          rounded-md shadow-xl w-52 m-1   "
-                >
-                  <Menubar.Item
-                    className="focus:outline-none focus:ring-0 focus:border-none cursor-pointer
-                               focus:text-primary-dark  focus:bg-primary-light
-                            hover:text-primary-dark  hover:bg-primary-light hover:rounded-md block w-full  p-3"
-                  >
+                <Menubar.Content className="bg-primary text-primary-light rounded-md shadow-xl w-52 m-1">
+                  <Menubar.Item className="focus:outline-none focus:ring-0 focus:border-none cursor-pointer focus:text-primary-dark  focus:bg-primary-light hover:text-primary-dark  hover:bg-primary-light hover:rounded-md block w-full  p-3">
                     Servicios
                   </Menubar.Item>
-                  <Menubar.Item
-                    className="focus:outline-none focus:ring-0 focus:border-none cursor-pointer
-                               focus:text-primary-dark  focus:bg-primary-light
-                            hover:text-primary-dark  hover:bg-primary-light hover:rounded-md block w-full  p-3"
-                  >
+                  <Menubar.Item className="focus:outline-none focus:ring-0 focus:border-none cursor-pointer focus:text-primary-dark  focus:bg-primary-light hover:text-primary-dark  hover:bg-primary-light hover:rounded-md block w-full  p-3">
                     Contacto
                   </Menubar.Item>
-                  <Menubar.Item
-                    className="focus:outline-none focus:ring-0 focus:border-none cursor-pointer
-                               focus:text-primary-dark  focus:bg-primary-light
-                            hover:text-primary-dark  hover:bg-primary-light hover:rounded-md block w-full  p-3"
-                  >
+                  <Menubar.Item className="focus:outline-none focus:ring-0 focus:border-none cursor-pointer focus:text-primary-dark  focus:bg-primary-light hover:text-primary-dark  hover:bg-primary-light hover:rounded-md block w-full  p-3">
                     Acerca de
                   </Menubar.Item>
                 </Menubar.Content>

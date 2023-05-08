@@ -29,10 +29,7 @@ const FormWithNotes: React.FC<FormWithNotesProps> = ({ initialText }) => {
     <div>
       {!modalVisible && (
         <button
-          className="text-textColor-violet font-semibold text-2xl
-                 focus:ring-2 focus:ring-black focus:outline-none cursor-pointer
-                 hover:bg-backgroundColor-mauve hover:underline 
-                 scale-[2]"
+          className="text-textColor-violet font-semibold text-2xl focus:ring-2 focus:ring-black focus:outline-none cursor-pointer hover:bg-backgroundColor-mauve hover:underline scale-[2]"
           onClick={handleModalClick}
         >
           Abrir Nota
@@ -40,7 +37,7 @@ const FormWithNotes: React.FC<FormWithNotesProps> = ({ initialText }) => {
       )}
       {modalVisible && (
         <Form.Root
-          className="fixed z-10  top-1/2 left-1/2  transform -translate-x-1/5 -translate-y-32 bg-blackA5 p-6 w-screen rounded border border-solid border-textColor-violet bg-white scale-[2] "
+          className="fixed z-10  top-1/2 left-1/2  transform -translate-x-1/5 -translate-y-32 bg-blackA5 p-6 w-screen rounded border border-solid border-textColor-violet bg-white scale-[2]"
           onSubmit={(event) => {
             event.preventDefault();
             const formData = new FormData(event.target as HTMLFormElement);
