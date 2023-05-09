@@ -1,19 +1,20 @@
-import axios from "axios";
 import { useEffect } from "react";
-
-import { useStore } from "../store/store";
 import { TableRegions, TextLine, TextResponse } from "../types/types";
+import { useStore } from "../store/store";
 
 const useLoadData = async () => {
-  const { setTotalRegions, setNoteModal } = useStore((state) => state);
+  const { setTotalRegions, totalRegions } = useStore((state) => state);
 
   useEffect(() => {
     const fetchData = async () => {
+      if (totalRegions.length > 0) return;
+
       const url = "src/data/albatross.json";
       try {
-        const {
-          data: { table_regions, text_regions },
-        } = await axios.get(url!);
+        const response = await fetch(url);
+        const data = await response.json();
+
+        const { table_regions, text_regions } = data;
 
         const jsonData = await {
           tableRegions1: table_regions.Table_1653668823938_59.table_cells!,
@@ -39,9 +40,10 @@ const useLoadData = async () => {
 
         const tableList = (regions: TableRegions) => {
           const textLinesWithContour = Object.values(regions)
-            .map((cell: TableRegions) => Object.values(cell.text_lines))
+            .map((cell: TableRegions) =>
+              cell?.text_lines ? Object.values(cell.text_lines) : []
+            )
             .flat()
-
             .filter((textLine) => textLine!.hasOwnProperty("contour"))
             .map((textLine) => {
               return {
@@ -61,10 +63,7 @@ const useLoadData = async () => {
 
         setTotalRegions(totalRegions);
       } catch (error: unknown) {
-        setNoteModal({
-          open: true,
-          textModal: "Error: " + (error as Error).message,
-        });
+        setTotalRegions([]);
       }
     };
 
