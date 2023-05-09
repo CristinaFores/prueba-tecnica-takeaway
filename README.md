@@ -123,8 +123,9 @@ Algunas de las mejoras que se podrían realizar en el futuro son:
   - Facilitar la visualización y gestión de las notas agregadas mediante una interfaz de usuario intuitiva y fácil de usar.
 
 2. Mejorar la accesibilidad.
-   - Asegurar que la aplicación cumpla con las pautas de accesibilidad WCAG 2.1 para facilitar su uso por parte de personas con discapacidades.
-   - Implementar características como navegación con teclado y etiquetas ARIA para mejorar la experiencia de los usuarios que utilizan tecnologías de asistencia.
+
+- Asegurar que la aplicación cumpla con las pautas de accesibilidad WCAG 2.1 para facilitar su uso por parte de personas con discapacidades.
+- Implementar características como navegación con teclado y etiquetas ARIA para mejorar la experiencia de los usuarios que utilizan tecnologías de asistencia.
 
 ## 🛠️ Herramientas y Configuraciones
 
