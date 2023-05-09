@@ -1,9 +1,9 @@
 import { useStore } from "../../store/store";
 import useLoadData from "../../hooks/useLoadData";
 import Regions from "../Regions/Regions";
+import imageUrl from "/data/Albatross_vol009of055-050-0.jpg";
 
 const AllRegions = () => {
-  const imageUrl = "src/data/Albatross_vol009of055-050-0.jpg";
   const totalRegions = useStore((state) => state.totalRegions);
 
   useLoadData();

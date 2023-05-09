@@ -2,7 +2,6 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import AllRegions from "../AllRegions/AllRegions";
 import "./App.css";
-import "../../data/albatross.json";
 
 const App = (): JSX.Element => {
   return (
