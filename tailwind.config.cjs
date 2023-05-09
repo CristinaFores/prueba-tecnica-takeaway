@@ -15,7 +15,8 @@ const defaultTheme = {
           dark: colors.slate[600],
         },
         textColor: {
-          violet: colors.violet[600],
+          primary: colors.violet[600],
+          secondary: colors.violet[900],
         },
         backgroundColor: {
           mauve: colors.violet[100],

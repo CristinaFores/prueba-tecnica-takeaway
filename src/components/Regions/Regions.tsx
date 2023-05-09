@@ -5,12 +5,12 @@ import { useState } from "react";
 import { KonvaEventObject } from "konva/lib/Node";
 import { TextLine } from "../../types/types";
 
-interface AnnotatorProps {
+interface RegionsProps {
   imageUrl: string;
   pointsArray: TextLine[];
 }
 
-const Regions = ({ imageUrl, pointsArray }: AnnotatorProps): JSX.Element => {
+const Regions = ({ imageUrl, pointsArray }: RegionsProps): JSX.Element => {
   const [image] = useImage(imageUrl);
   const [scale, setScale] = useState(0.45);
   const [selectedPolygon, setSelectedPolygon] = useState(null as string | null);
@@ -28,7 +28,6 @@ const Regions = ({ imageUrl, pointsArray }: AnnotatorProps): JSX.Element => {
   return (
     <div>
       <Stage
-        draggable
         width={window.innerWidth}
         height={window.innerHeight * 2.8}
         onWheel={handleWheel}

@@ -5,7 +5,7 @@ import Konva from "konva";
 import { Html } from "react-konva-utils";
 import Draggable from "react-draggable";
 import FormWithNotes from "../FormWithNotes/FormWithNotes";
-import { Point, TextLine } from "../../types/types";
+import { TextLine } from "../../types/types";
 import { useStore } from "../../store/store";
 
 interface DraggablePolygonProps {
@@ -23,7 +23,12 @@ const DraggablePolygon = ({
   const [polygonPoints, setPolygonPoints] = useState(points.points);
   const [verticesVisible, setVerticesVisible] = useState(false);
   const [fillOpacity, setFillOpacity] = useState(1);
-  const { setNoteModal } = useStore((state) => state);
+
+  const { setNoteModal, setUpdatePolygonPoints } = useStore((state) => ({
+    setNoteModal: state.setNoteModal,
+    setUpdateNote: state.setUpdateNote,
+    setUpdatePolygonPoints: state.setUpdatePolygonPoints,
+  }));
 
   const handlePolygonClick = () => {
     if (selectedPolygon === points.id) {
@@ -36,17 +41,6 @@ const DraggablePolygon = ({
     }
   };
 
-  const updatePolygonInStore = (updatedPoints: Point[]) => {
-    useStore.setState((state) => {
-      const updatedTotalRegions = state.totalRegions.map((region) => {
-        if (region.id === points.id) {
-          return { ...region, points: updatedPoints };
-        }
-        return region;
-      });
-      return { totalRegions: updatedTotalRegions };
-    });
-  };
   const handleDragStart = () => {
     setDragging(true);
   };
@@ -72,7 +66,7 @@ const DraggablePolygon = ({
     updatedPoints[index] = { x: event.target.x(), y: event.target.y() };
 
     setPolygonPoints(updatedPoints);
-    updatePolygonInStore(updatedPoints);
+    setUpdatePolygonPoints(points.id, updatedPoints);
   };
 
   const vertices = polygonPoints.map((point, index) => (
@@ -108,11 +102,11 @@ const DraggablePolygon = ({
             <Draggable
               defaultPosition={{
                 x: points.points[0].x + 50,
-                y: points.points[0].y - 50,
+                y: points.points[0].y - 70,
               }}
               scale={1}
             >
-              <div className="cursor-pointe">
+              <div className="cursor-pointe flex gap-20">
                 <FormWithNotes initialText={points.text} />
               </div>
             </Draggable>
