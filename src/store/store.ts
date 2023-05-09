@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { ModalNote, TextLine } from "../types/types";
+import { ModalNote, Point, TextLine } from "../types/types";
 
 interface StoreState {
   totalRegions: TextLine[];
@@ -9,16 +9,30 @@ interface StoreState {
   setNoteModal: (noteModal: ModalNote) => void;
   setNote: (note: string) => void;
   setOpen: (open: boolean) => void;
+  setUpdateNote: (id: string, newNote: string) => void;
+  setUpdatePolygonPoints: (id: string, updatedPoints: Point[]) => void;
 }
 
 export const useStore = create(
   persist<StoreState>(
     (set, get) => ({
       totalRegions: [],
+
       setTotalRegions: (regions: TextLine[]) =>
         set(() => {
           return { totalRegions: regions };
         }),
+      setUpdatePolygonPoints: (id: string, updatedPoints: Point[]) =>
+        set((state) => {
+          const updatedTotalRegions = state.totalRegions.map((region) => {
+            if (region.id === id) {
+              return { ...region, points: updatedPoints };
+            }
+            return region;
+          });
+          return { totalRegions: updatedTotalRegions };
+        }),
+
       noteModal: {
         open: false,
         textModal: "",
@@ -43,6 +57,17 @@ export const useStore = create(
       setNoteModal: (noteModal: ModalNote) =>
         set(() => {
           return { noteModal: noteModal };
+        }),
+
+      setUpdateNote: (id: string, newNote: string) =>
+        set((state) => {
+          const updatedTotalRegions = state.totalRegions.map((region) => {
+            if (region.id === id) {
+              return { ...region, note: newNote };
+            }
+            return region;
+          });
+          return { totalRegions: updatedTotalRegions };
         }),
     }),
     {
