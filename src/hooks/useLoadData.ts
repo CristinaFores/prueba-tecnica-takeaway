@@ -9,7 +9,7 @@ const useLoadData = async () => {
     const fetchData = async () => {
       if (totalRegions.length > 0) return;
 
-      const url = "src/data/albatross.json";
+      const url = "/data/albatross.json";
       try {
         const response = await fetch(url);
         const data = await response.json();
