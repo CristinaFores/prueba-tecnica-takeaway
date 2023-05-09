@@ -3,7 +3,6 @@
 Se trata de un visor de anotaciones sobre imágenes con funcionalidades de edición y guardado de cambios. Este proyecto se centra en analizar regiones de texto y tablas dentro de un documento y proporciona una interfaz para interactuar con ellas.
 
 ▶️[App TranSkrip](https://takeaway-cristina-fores.netlify.app/)
-
 </br>
 
 ## 🧩 Componentes
