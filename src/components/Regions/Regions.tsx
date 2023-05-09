@@ -28,7 +28,6 @@ const Regions = ({ imageUrl, pointsArray }: AnnotatorProps): JSX.Element => {
   return (
     <div>
       <Stage
-        draggable
         width={window.innerWidth}
         height={window.innerHeight * 2.8}
         onWheel={handleWheel}
