@@ -1,6 +1,8 @@
 import { useEffect } from "react";
-import { TableRegions, TextLine, TextResponse } from "../types/types";
+
 import { useStore } from "../store/store";
+import searchKeysObject from "../utils/searchKeysObject";
+import { TextLine } from "../types/types";
 
 const useLoadData = async () => {
   const { setTotalRegions, totalRegions } = useStore((state) => state);
@@ -14,20 +16,11 @@ const useLoadData = async () => {
         const response = await fetch(url);
         const data = await response.json();
 
-        const { table_regions, text_regions } = data;
+        const table = searchKeysObject(data, "text_lines");
 
-        const jsonData = await {
-          tableRegions1: table_regions.Table_1653668823938_59.table_cells!,
-          tableRegions2: table_regions.Table_1653671262363_267.table_cells!,
-          textRegions:
-            text_regions["textregion_Albatross_vol009of055-050-0"].text_lines,
-        };
+        const tableTranformObject: TextLine = Object.assign({}, ...table);
 
-        const textRegions = jsonData.textRegions as TextResponse;
-        const tableRegions = jsonData.tableRegions1 as TableRegions;
-        const tableRegions2 = jsonData.tableRegions2 as TableRegions;
-
-        const textLine: TextLine[] = Object.entries(textRegions).map(
+        const allRegions: TextLine[] = Object.entries(tableTranformObject).map(
           ([key, value]) => {
             return {
               regionId: key,
@@ -38,28 +31,7 @@ const useLoadData = async () => {
           }
         );
 
-        const tableList = (regions: TableRegions) => {
-          const textLinesWithContour = Object.values(regions)
-            .map((cell: TableRegions) =>
-              cell?.text_lines ? Object.values(cell.text_lines) : []
-            )
-            .flat()
-            .filter((textLine) => textLine!.hasOwnProperty("contour"))
-            .map((textLine) => {
-              return {
-                regionId: textLine.id,
-                id: textLine.id,
-                text: textLine.text,
-                points: textLine.contour?.exterior,
-              };
-            });
-
-          return textLinesWithContour;
-        };
-
-        const table1 = tableList(tableRegions);
-        const table2 = tableList(tableRegions2);
-        const totalRegions = [...table1, ...table2, ...textLine];
+        const totalRegions = [...allRegions];
 
         setTotalRegions(totalRegions);
       } catch (error: unknown) {
